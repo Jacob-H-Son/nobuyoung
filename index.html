@@ -176,18 +176,103 @@ const APIKEY = "";   // ← 예: "AIzaSy..." (선택)
 
 /* 예비 목록 — API 키가 없을 때 사용. 2026-08-06 기준 */
 const SEED = [
-  {g:"Story Song", items:[
-    {n:"01", t:"JY Books Company Song",              id:"1v7zhSkdU5ExAPvN9qbt9qBB7Hn68p66M"},
-    {n:"02", t:"10 Button Book",                     id:"1rscP2-LHiztYx3HMzJbFNwo4pi6x76Ga"},
-    {n:"03", t:"A Parade of Elephants",              id:"1f2Bo5OIt5t7VIP_Rd-CeSsusiHOPuPQ5"},
-    {n:"04", t:"Color Zoo",                          id:"1DGH2UCALKlH7ZafJ6peiBis6sLdSFizO"},
+  {g:"Story Song", sl:"story-song", items:[
+    {n:"01", t:"JY Books Company Song", id:"1v7zhSkdU5ExAPvN9qbt9qBB7Hn68p66M"},
+    {n:"02", t:"10 Button Book", id:"1rscP2-LHiztYx3HMzJbFNwo4pi6x76Ga"},
+    {n:"03", t:"A Parade of Elephants", id:"1f2Bo5OIt5t7VIP_Rd-CeSsusiHOPuPQ5"},
+    {n:"04", t:"Color Zoo", id:"1DGH2UCALKlH7ZafJ6peiBis6sLdSFizO"},
     {n:"05", t:"Does a Kangaroo Have a Mother Too?", id:"1IBQH_tV_b4joVhIHtxDFMiuJa2PKcK3N"},
-    {n:"06", t:"Goodnight Moon",                     id:"1a-YH2g3GH8kSOcYdFyngDqWLnuD79kDa"},
-    {n:"07", t:"Helen Oxenbury's Big Baby Book",     id:"1yqw1U7dhGehtvl3GgPlyPVMahIYxKtlZ"},
-    {n:"08", t:"Hush Little Baby",                   id:"12hmMESk8ljYXvSX_I8WGskZ5SNQQUybN"},
-    {n:"09", t:"Lemons Are Not Red",                 id:"1JuOwZfXQzTMyTKbh45eoD0wXqR9KAEZr"},
+    {n:"06", t:"Goodnight Moon", id:"1a-YH2g3GH8kSOcYdFyngDqWLnuD79kDa"},
+    {n:"07", t:"Helen Oxenbury's Big Baby Book", id:"1yqw1U7dhGehtvl3GgPlyPVMahIYxKtlZ"},
+    {n:"08", t:"Hush Little Baby", id:"12hmMESk8ljYXvSX_I8WGskZ5SNQQUybN"},
+    {n:"09", t:"Lemons Are Not Red", id:"1JuOwZfXQzTMyTKbh45eoD0wXqR9KAEZr"},
     {n:"10", t:"Nighty Night, Little Green Monster", id:"1Zfv0c_WizMPCkMwFguixtyZVkGxCPOrz"},
-    {n:"11", t:"Noisy Peekaboo! Choo Choo",          id:"10tq03WyJxI1uZcCEFF0q1ZIZLCMgepMg"},
+    {n:"11", t:"Noisy Peekaboo! Choo Choo", id:"10tq03WyJxI1uZcCEFF0q1ZIZLCMgepMg"},
+  ]},
+  {g:"Choo Choo", sl:"choo-choo", items:[
+    {n:"01", t:"JY Books Company Song", id:"1QniscScicPdFWAhMZoXJbbXWVA6hofbg"},
+    {n:"02", t:"Story Song", id:"1-qE5PL4cM6dNBv2okBuPd6EslfEL9eIZ"},
+    {n:"03", t:"Story Reading", id:"1JlcFlBtJCTQmI8f8VZmjcOYzWfYo_bl8"},
+    {n:"04", t:"Echo Chant", id:"11dd9iU9MaikWbcl6xR8RIFwIIMt5nQjw"},
+    {n:"05", t:"Song with Children", id:"1UU1Xz22F8aLAtXSmSYj7y5LS0hQXttjc"},
+    {n:"06", t:"Melody", id:"1bAJACsaECxFHDIUbPhJC8kTyXBxg64pd"},
+  ]},
+  {g:"Lemons Are Not Red", sl:"lemons-are-not-red", items:[
+    {n:"01", t:"JY Books Company Song", id:"1lTn6p_4W7Jyll80zQOYltsKI_DW_cOZp"},
+    {n:"02", t:"Story Song", id:"19zdYWo1coMTfQz1E2xcSsYhWlo8Me-a3"},
+    {n:"03", t:"Story Reading", id:"1zWB4avWw0ZDKYwjHWUCdAb7qPcdAd20c"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1be4UlF3ioy62f0pcg7y5GzoT_SS3PAKQ"},
+    {n:"05", t:"Echo Chant", id:"19s2wx0vvPfXjkCX5epL1JAB8PDD48vlU"},
+    {n:"06", t:"Song with Children", id:"1V5ymSOiqVJSV3vve3xcKcuLWvrhi9Tg7"},
+    {n:"07", t:"Melody", id:"12v5toqsWlZWeU3JdVxIGQ1HvDknxAOqn"},
+  ]},
+  {g:"Nighty Night, Little Green Monster", sl:"nighty-night-little-green-monster", items:[
+    {n:"01", t:"JY Books Company Song", id:"16dceo60w-zzDR5SCyzM-nApqobUAW0ba"},
+    {n:"02", t:"Story Song", id:"18aaGswlQydd2GSxJnKlwpmo4PtFH1-Ee"},
+    {n:"03", t:"Story Reading", id:"1oeotxTt93g8qZL3mNV0ht_nh3hDu2XM9"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1L_CBqEc_l2dmRUIiOUcCi9MhMEQLvac8"},
+    {n:"05", t:"Echo Chant", id:"18cYB91SIBmwSRsg8gKm6JwRTfyjnO1nc"},
+    {n:"06", t:"Song with Children", id:"1q_8JZtgu6baTMRuePHqjmokVZ763uqHc"},
+    {n:"07", t:"Melody", id:"1MOKfv13HhUqytA4PvN4lrcV0WTeb2TS8"},
+  ]},
+  {g:"Splish Splash Ducky", sl:"splish-splash-ducky", items:[
+    {n:"01", t:"JY Books Company Song", id:"1QbRrzspyt3YhkSNnCJvve_E-P0CSa0L7"},
+    {n:"02", t:"Story Song", id:"1kLfGHGxIEt9X86dv2zNsWu1-qBqpN7wJ"},
+    {n:"03", t:"Story Reading", id:"1tXCapCbxUF2bdyqYzejNJCGIPtMEwJiC"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1xoQiNUgdrKm67SooJZyOdDiaoKsYHDNN"},
+    {n:"05", t:"Echo Chant", id:"1Zbl6PvhUL2UZa9PT8sz7AV6XnyXRCIrQ"},
+    {n:"06", t:"Song with Children", id:"1UKgpM34FUIjiFyJq1pxruO_17qZRSv3h"},
+    {n:"07", t:"Melody", id:"15rCcg6NnDfJEftmF-UzRLEui_UHeDZQD"},
+  ]},
+  {g:"Whose Baby Am I", sl:"whose-baby-am-i", items:[
+    {n:"01", t:"JY Books Company Song", id:"1ikdbyjRtA5j9fmF6bfwfE5VTn8pMOcvU"},
+    {n:"02", t:"Story Song", id:"1c_FRBkwjaUI3_EPjJOZz3iFWw77DnWYH"},
+    {n:"03", t:"Story Reading", id:"1_wiD4seXCgESkXeFeOW8vFuNATZ0ad4T"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1gI_JVKLBKKAw9W2ZtiXq0DYG-trmjS_u"},
+    {n:"05", t:"Echo Chant", id:"1KO4se0aSrBFqnNlqR7zxKxSikojBuAXV"},
+    {n:"06", t:"Song with Children", id:"1tsprzhZMYAn_cqEkhQGF_OPB6bg7b79c"},
+    {n:"07", t:"Melody", id:"1JxbbeFPwK-d6F_oeHCVloI-XqyAw3kcN"},
+    {n:"08", t:"트랙 8", id:"1FCm_SNFQGwbBOU8I4y8EhBW7-nptrXln"},
+    {n:"09", t:"트랙 9", id:"1a1FIeBQCSo-eI5TfAuw6gH5rxEPstYjY"},
+    {n:"10", t:"트랙 10", id:"1S8NmLHKJMHVAhNJKuI5LHR6oVOh3D3ME"},
+    {n:"11", t:"트랙 11", id:"1iO8fp5HJt_EjyiiOb6eHbJDyDxxhZA0o"},
+  ]},
+  {g:"Welcome Baby", sl:"welcome-baby", items:[
+    {n:"01", t:"JY Books Company Song", id:"1aFX2FvgfAnv3w5kFLGMpYduo82zw-9z4"},
+    {n:"02", t:"Title", id:"11yl-k2wjbfApL1wVqG7R2erUDgnGBWoZ"},
+    {n:"03", t:"For Baby", id:"1L7eOv0oyjhp-RIL34TcXBLSwWxV8nA5b"},
+    {n:"04", t:"Welcome Baby!", id:"1396ZDOd6N4h5am8WN6K36njStNR8JUkr"},
+    {n:"05", t:"Diaper Song", id:"190ENT8_kQSRn4Gstw274ne3SfVPNNH7v"},
+    {n:"06", t:"Your Nose Knows", id:"1aTTAh5pj_x_375--463lLyxhl6X_Exv6"},
+    {n:"07", t:"Barnyard Chat", id:"13VLHU_EbxWbGGdlf9HZrJuNB2A8oujYM"},
+    {n:"08", t:"Baby's Things", id:"1BGGgWnVrWYZEe_hdcuJgT6ZCFrQrlpK3"},
+    {n:"09", t:"All Aboard", id:"1gJBeK9_p3nJZSn7nLLVMG6aR4Rx2_uhG"},
+    {n:"10", t:"Who's a Good Baby", id:"1EJ0vRYqnVEXXfR-tg3XphrcccgDaef2s"},
+    {n:"11", t:"What Babies Do", id:"105JPCv4dFmVwNc5i4ZBYfFNZL1m3kMN9"},
+    {n:"12", t:"I Like Buttons", id:"19vXkT2V464dnM1ku1PWUuGNGM7o-dZQt"},
+    {n:"13", t:"Messy", id:"1ofLXWjrkFIvcja58PMGwijTUSVN98DpA"},
+    {n:"14", t:"Splishy Splashy", id:"1fCBWeV5jrtkTsPeCcSaOMQ0V6m4A9HKd"},
+    {n:"15", t:"Little Blue Whale", id:"1xUfZR2IuRjmMW2oeV3gaZXqFRJZYMuMn"},
+    {n:"16", t:"Here's My Ball", id:"1v85WCEKlkxMJTEJbBsHfzBv_TQYwVp-8"},
+    {n:"17", t:"Giddyap", id:"1t7UNZ-UQxOEzlS-RbmG3BJsbIxXjRyXv"},
+    {n:"18", t:"Silly Toe Song", id:"1-Fo1S7FGEw_KHoGmcm0BHGj0Wd0uUK7R"},
+    {n:"19", t:"Babies in a Stroller", id:"1vd5B6PECg3EYRZqWm9lrWEKiqclM2xCM"},
+    {n:"20", t:"Peekaboo, Kangaroo!", id:"1B8MsVzSVZPUQzd-STvsZi5Zrd0_0gsc1"},
+    {n:"21", t:"Riding Shoulders", id:"1Ma49gPV14e4caDzlrASgvUpOZ2kp6sTM"},
+    {n:"22", t:"Walking", id:"1MWlo32vVGvv8UFXiiuIOKSrxM9lfzWMC"},
+    {n:"23", t:"Talking", id:"1ZIhudWMklZHJh4epXI8q4nvsFag0XX6Q"},
+    {n:"24", t:"Taking Care of Bear", id:"1wK55myDLCNNeOUPJOyI06vdb3S8ZtWWN"},
+    {n:"25", t:"Baby's Birthday", id:"1ZlOd-egEyRDXql3izhi-ULvKTKo0xOQU"},
+    {n:"26", t:"A B C", id:"1H_ys_k_PQ7z1Yrvs7RV1FBm6vm5MJAaS"},
+    {n:"27", t:"1 2 3", id:"1fAUcZavq7gnxehpyh7hvPf6BTrscAcg1"},
+    {n:"28", t:"Red Green Yellow Blue", id:"1PzHWibILVGWH5fat52QloTiWIU045eVY"},
+    {n:"29", t:"Wiggle Your Fingers and Toes", id:"1ZPv5UjMDg5Qw8Wa_HjBQynzEOx3N4cih"},
+    {n:"30", t:"Hug", id:"1AISe53sdEPaRd3GLJc9oDMtzqNKWrKxV"},
+    {n:"31", t:"Morning Walk", id:"1HVUSD1riPLZZXek991QpihocQSg0CcuE"},
+    {n:"32", t:"Windup Boy", id:"18hY40V2vXg5Ua9-qbo3OFq_nUN2aC9Pr"},
+    {n:"33", t:"Grasshopper Girl", id:"1lq1_LzeargLh_ppSM_t5qeGLMPeKLl4V"},
+    {n:"34", t:"Sleepy Little Baby", id:"1-Mpuw8P8eepYaDGfWQJAF4sVLnoFEVF5"},
+    {n:"35", t:"Butterfly Kiss", id:"1K3aR7mP0nymAa1GYpLTbbKkWSZrY5xqO"},
   ]},
 ];
 
@@ -199,7 +284,8 @@ const mem={}; const store={
   set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
 };
 const fmt=s=>(!isFinite(s)||s<0)?"0:00":Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,'0');
-const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,28);
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
+const gs=g=>g.sl||slug(g.g);   // 앨범 고유 주소(QR 링크의 기준)
 
 /* 파일명 → 보기 좋은 제목 (01_Color_Zoo.mp3 → 01 / Color Zoo) */
 const FIX={ "felen":"Helen", "nightly":"Nighty", "noisly":"Noisy", "jybooks":"JY Books" };
@@ -255,14 +341,14 @@ async function loadLive(){
 /* ─── 렌더 ─── */
 function build(){
   flat = [];
-  DATA.forEach(g=>g.items.forEach(it=>flat.push({...it, g:g.g, gid:slug(g.g)})));
+  DATA.forEach(g=>g.items.forEach(it=>flat.push({...it, g:g.g, gid:gs(g)})));
   renderTabs(); render();
   $('#foot').innerHTML = `총 ${DATA.length}개 묶음 · ${flat.length}개 음원<br>`
     + `<a href="qr.html" style="color:inherit;text-decoration:underline">QR 스티커 시트 인쇄 →</a>`;
 }
 function renderTabs(){
   $('#tabs').innerHTML = `<button class="tab" data-t="all" aria-selected="${curTab==='all'}">전체</button>`
-    + DATA.map(g=>`<button class="tab" data-t="${slug(g.g)}" aria-selected="${curTab===slug(g.g)}">${g.g}</button>`).join('');
+    + DATA.map(g=>`<button class="tab" data-t="${gs(g)}" aria-selected="${curTab===gs(g)}">${g.g}</button>`).join('');
 }
 function render(){
   const q = $('#q').value.trim().toLowerCase();
@@ -383,7 +469,7 @@ function applyHash(){
   }
 
   // ② 묶음(책) 딥링크 — #story-song
-  if(DATA.some(g=>slug(g.g)===h)){ curTab=h; renderTabs(); render();
+  if(DATA.some(g=>gs(g)===h)){ curTab=h; renderTabs(); render();
     const el=document.getElementById(h); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
 }
 
