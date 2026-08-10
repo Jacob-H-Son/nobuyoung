@@ -68,8 +68,9 @@
   </div>
 
   <div class="hint">
-    <b>왜 트랙 번호(#n=01)로 링크하나요?</b> 파일을 다시 올리면 드라이브 파일 ID는 바뀌지만 번호는 그대로입니다.
-    번호로 링크해두면 <b>한 번 인쇄한 QR이 계속 살아있습니다.</b> 책을 추가하실 때 번호만 이어서 매기세요.
+    <b>QR 1장 = 책 1권입니다.</b> 찍으면 그 책의 트랙 목록(스토리송 · 리딩 · 챈트 · 멜로디)이 열립니다.<br>
+    링크는 파일 ID가 아니라 <b>앨범 고유 주소</b>로 걸려 있어서, 음원을 다시 올려도
+    <b>인쇄한 QR이 계속 살아있습니다.</b> 단, 드라이브의 <b>폴더 이름은 바꾸지 마세요.</b>
   </div>
 </div>
 
@@ -78,17 +79,13 @@
 <script>
 /* 책 목록 — 새 책이 늘면 여기에 한 줄씩 추가하세요 */
 const BOOKS = [
-  {n:"01", t:"JY Books Company Song"},
-  {n:"02", t:"10 Button Book"},
-  {n:"03", t:"A Parade of Elephants"},
-  {n:"04", t:"Color Zoo"},
-  {n:"05", t:"Does a Kangaroo Have a Mother Too?"},
-  {n:"06", t:"Goodnight Moon"},
-  {n:"07", t:"Helen Oxenbury's Big Baby Book"},
-  {n:"08", t:"Hush Little Baby"},
-  {n:"09", t:"Lemons Are Not Red"},
-  {n:"10", t:"Nighty Night, Little Green Monster"},
-  {n:"11", t:"Noisy Peekaboo! Choo Choo"},
+  {sl:"story-song", t:"Story Song", c:11},
+  {sl:"choo-choo", t:"Choo Choo", c:6},
+  {sl:"lemons-are-not-red", t:"Lemons Are Not Red", c:7},
+  {sl:"nighty-night-little-green-monster", t:"Nighty Night, Little Green Monster", c:7},
+  {sl:"splish-splash-ducky", t:"Splish Splash Ducky", c:7},
+  {sl:"whose-baby-am-i", t:"Whose Baby Am I", c:11},
+  {sl:"welcome-baby", t:"Welcome Baby", c:35},
 ];
 
 const $ = s => document.querySelector(s);
@@ -111,14 +108,14 @@ function draw(){
     cell.appendChild(holder);
 
     const cap = document.createElement('div');
-    cap.innerHTML = `<div class="no">TRACK ${b.n}</div>
+    cap.innerHTML = `<div class="no">${b.c}곡</div>
                      <div class="ttl">${b.t}</div>
                      <div class="brand">노부영 음원</div>`;
     cell.appendChild(cap);
     grid.appendChild(cell);
 
     new QRCode(holder, {
-      text: `${base}#n=${b.n}`,
+      text: `${base}#${b.sl}`,
       width: size, height: size,
       colorDark:"#1a1815", colorLight:"#ffffff",
       correctLevel: QRCode.CorrectLevel.M

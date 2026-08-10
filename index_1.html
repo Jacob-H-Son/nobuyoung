@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>노부영 음원 · NoBuYoung Baby Best</title>
+<meta name="theme-color" content="#fbf8f3">
+<style>
+  :root{
+    --bg:#fbf8f3; --card:#fff; --ink:#221f1b; --ink2:#6f6759; --ink3:#a49a89;
+    --line:#ebe3d6; --accent:#e0603f; --soft:#fceee9; --ok:#3f8f6b;
+    --shadow:0 1px 2px rgba(34,31,27,.05), 0 10px 30px rgba(34,31,27,.07);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#161418;--card:#211e24;--ink:#f4f0ea;--ink2:#a79f95;--ink3:#7a7269;
+          --line:#332e38;--accent:#ff7f5e;--soft:#2d2027;--ok:#5cbb90;
+          --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);}
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;
+    font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+    padding-bottom:calc(120px + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+  header{padding:24px 0 4px}
+  .eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);font-weight:700}
+  h1{font-size:26px;line-height:1.22;margin:7px 0 3px;letter-spacing:-.025em;font-weight:780}
+  .sub{color:var(--ink2);font-size:13.5px}
+  .status{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;
+    color:var(--ink2);background:var(--card);border:1px solid var(--line);
+    padding:5px 11px;border-radius:999px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--ink3)}
+  .dot.live{background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 22%,transparent)}
+
+  .search{position:relative;margin:16px 0 10px}
+  .search input{width:100%;padding:13px 40px 13px 42px;border-radius:13px;border:1px solid var(--line);
+    background:var(--card);color:var(--ink);font-size:16px;outline:none;box-shadow:var(--shadow)}
+  .search input:focus{border-color:var(--accent)}
+  .search .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.4}
+  .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;
+    color:var(--ink2);font-size:19px;padding:8px;cursor:pointer;display:none}
+
+  .tabs{display:flex;gap:7px;overflow-x:auto;padding:4px 16px 14px;margin:0 -16px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink2);
+    padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:650;cursor:pointer;white-space:nowrap;transition:.14s}
+  .tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .grp{margin:0 0 18px}
+  .grp-h{display:flex;align-items:baseline;justify-content:space-between;margin:2px 3px 9px;gap:10px}
+  .grp-h h2{font-size:16px;margin:0;font-weight:720;letter-spacing:-.015em;min-width:0;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .grp-h .n{font-size:12px;color:var(--ink3);flex:0 0 auto}
+  ul.list{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  li.trk{display:flex;align-items:center;gap:12px;padding:13px 15px;cursor:pointer;border-top:1px solid var(--line)}
+  li.trk:first-child{border-top:0}
+  li.trk:active{background:var(--soft)}
+  li.trk.on{background:var(--soft)}
+  .num{flex:0 0 33px;height:33px;border-radius:10px;background:var(--bg);border:1px solid var(--line);
+    display:grid;place-items:center;font-size:12.5px;font-weight:750;color:var(--ink2)}
+  li.trk.on .num{background:var(--accent);border-color:var(--accent);color:#fff}
+  .meta{min-width:0;flex:1}
+  .t1{font-size:15px;font-weight:640;letter-spacing:-.012em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .t2{font-size:12px;color:var(--ink3);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .eq{flex:0 0 auto;display:none;gap:2.5px;align-items:flex-end;height:14px}
+  li.trk.on .eq{display:flex}
+  .eq i{width:3px;background:var(--accent);border-radius:2px;animation:eq .9s ease-in-out infinite}
+  .eq i:nth-child(2){animation-delay:.15s}.eq i:nth-child(3){animation-delay:.3s}
+  @keyframes eq{0%,100%{height:4px}50%{height:14px}}
+  .empty{padding:40px 20px;text-align:center;color:var(--ink3);font-size:14px}
+
+  .player{position:fixed;left:0;right:0;bottom:0;z-index:40;
+    background:color-mix(in srgb,var(--card) 93%,transparent);
+    backdrop-filter:saturate(1.7) blur(20px);-webkit-backdrop-filter:saturate(1.7) blur(20px);
+    border-top:1px solid var(--line);padding:10px 16px calc(12px + env(safe-area-inset-bottom));
+    transform:translateY(105%);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .player.up{transform:none}
+  .player .in{max-width:760px;margin:0 auto}
+  .ptop{display:flex;align-items:center;gap:10px}
+  .pm{flex:1;min-width:0}
+  .pt{font-size:14.5px;font-weight:720;letter-spacing:-.012em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ps{font-size:11.5px;color:var(--ink3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .b{border:0;background:none;color:var(--ink);cursor:pointer;padding:8px;display:grid;place-items:center;border-radius:11px}
+  .b:active{background:var(--soft)}
+  .b.play{background:var(--accent);color:#fff;width:47px;height:47px;border-radius:50%;flex:0 0 auto}
+  .bar{display:flex;align-items:center;gap:9px;margin-top:8px}
+  .tm{font-size:11px;color:var(--ink3);font-variant-numeric:tabular-nums;flex:0 0 38px}
+  .tm.r{text-align:right}
+  input[type=range]{flex:1;-webkit-appearance:none;appearance:none;background:transparent;height:22px;margin:0}
+  input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:3px;
+    background:linear-gradient(var(--accent),var(--accent)) 0/var(--pct,0%) 100% no-repeat,var(--line)}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+    background:var(--accent);margin-top:-5.5px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+  input[type=range]::-moz-range-track{height:4px;border-radius:3px;background:var(--line)}
+  input[type=range]::-moz-range-progress{height:4px;border-radius:3px;background:var(--accent)}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border:0;border-radius:50%;background:var(--accent)}
+  .chips{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+  .chip{font-size:11.5px;font-weight:650;color:var(--ink2);border:1px solid var(--line);background:var(--card);
+    border-radius:999px;padding:5px 11px;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .modal{position:fixed;inset:0;z-index:60;background:rgba(20,17,14,.74);display:none;place-items:center;padding:20px}
+  .modal.on{display:grid}
+  .box{background:var(--card);border-radius:16px;width:100%;max-width:460px;padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.4)}
+  .box h3{margin:0 0 5px;font-size:16px}
+  .box p{margin:0 0 13px;font-size:13px;color:var(--ink2);line-height:1.55}
+  .box iframe{width:100%;height:78px;border:0;border-radius:11px;background:var(--bg)}
+  .box button{margin-top:12px;width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);
+    background:var(--bg);color:var(--ink);font-size:14.5px;font-weight:650;cursor:pointer}
+  footer{text-align:center;color:var(--ink3);font-size:11.5px;padding:22px 0 8px;line-height:1.7}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">NoBuYoung · Baby Best</div>
+    <h1>노부영 음원</h1>
+    <div class="sub">책 표지의 QR을 찍거나, 아래에서 골라 들으세요</div>
+    <div class="status"><span class="dot" id="dot"></span><span id="statusTxt">불러오는 중…</span></div>
+  </header>
+
+  <div class="search">
+    <svg class="ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="책 제목으로 검색 (예: moon, zoo)" autocomplete="off">
+    <button class="clr" id="clr" aria-label="지우기">×</button>
+  </div>
+</div>
+
+<div class="wrap"><div class="tabs" id="tabs"></div></div>
+<div class="wrap" id="body"></div>
+<div class="wrap"><footer id="foot"></footer></div>
+
+<div class="player" id="player"><div class="in">
+  <div class="ptop">
+    <div class="pm"><div class="pt" id="pt">—</div><div class="ps" id="ps"></div></div>
+    <button class="b" id="prev" aria-label="이전"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6h2v12H7zM19 6v12l-9-6z"/></svg></button>
+    <button class="b play" id="play" aria-label="재생">
+      <svg id="ip" width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+      <svg id="iq" width="21" height="21" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+    </button>
+    <button class="b" id="next" aria-label="다음"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M15 6h2v12h-2zM5 6l9 6-9 6z"/></svg></button>
+  </div>
+  <div class="bar">
+    <span class="tm" id="cur">0:00</span>
+    <input id="seek" type="range" min="0" max="1000" value="0" aria-label="재생 위치">
+    <span class="tm r" id="dur">0:00</span>
+  </div>
+  <div class="chips">
+    <button class="chip" id="cRep" aria-pressed="false">🔁 한 곡 반복</button>
+    <button class="chip" id="cAuto" aria-pressed="true">▶ 연속 재생</button>
+    <button class="chip" id="cSpd">1×</button>
+    <button class="chip" id="cSleep" aria-pressed="false">🌙 30분 뒤 정지</button>
+  </div>
+</div></div>
+
+<div class="modal" id="modal"><div class="box">
+  <h3 id="mT">알림</h3><p id="mP"></p>
+  <iframe id="mF" allow="autoplay"></iframe>
+  <button id="mX">닫기</button>
+</div></div>
+
+<audio id="au" preload="none" playsinline></audio>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   설정 — 여기 두 줄만 관리하면 됩니다
+   ROOT   : 드라이브 루트 폴더 ID (NoBuYoung_Baby_Best)
+   APIKEY : 구글 API 키. 넣으면 폴더를 실시간으로 읽어 자동 동기화됩니다.
+            비워두면 아래 SEED 목록으로 동작합니다.
+   ═══════════════════════════════════════════════════════════════ */
+const ROOT   = "16Io2ZFElBisW_KWgcWnEPD2VNosgdLHc";
+const APIKEY = "";   // ← 예: "AIzaSy..." (선택)
+
+/* 예비 목록 — API 키가 없을 때 사용. 2026-08-06 기준 */
+const SEED = [
+  {g:"Story Song", sl:"story-song", items:[
+    {n:"01", t:"JY Books Company Song", id:"1v7zhSkdU5ExAPvN9qbt9qBB7Hn68p66M"},
+    {n:"02", t:"10 Button Book", id:"1rscP2-LHiztYx3HMzJbFNwo4pi6x76Ga"},
+    {n:"03", t:"A Parade of Elephants", id:"1f2Bo5OIt5t7VIP_Rd-CeSsusiHOPuPQ5"},
+    {n:"04", t:"Color Zoo", id:"1DGH2UCALKlH7ZafJ6peiBis6sLdSFizO"},
+    {n:"05", t:"Does a Kangaroo Have a Mother Too?", id:"1IBQH_tV_b4joVhIHtxDFMiuJa2PKcK3N"},
+    {n:"06", t:"Goodnight Moon", id:"1a-YH2g3GH8kSOcYdFyngDqWLnuD79kDa"},
+    {n:"07", t:"Helen Oxenbury's Big Baby Book", id:"1yqw1U7dhGehtvl3GgPlyPVMahIYxKtlZ"},
+    {n:"08", t:"Hush Little Baby", id:"12hmMESk8ljYXvSX_I8WGskZ5SNQQUybN"},
+    {n:"09", t:"Lemons Are Not Red", id:"1JuOwZfXQzTMyTKbh45eoD0wXqR9KAEZr"},
+    {n:"10", t:"Nighty Night, Little Green Monster", id:"1Zfv0c_WizMPCkMwFguixtyZVkGxCPOrz"},
+    {n:"11", t:"Noisy Peekaboo! Choo Choo", id:"10tq03WyJxI1uZcCEFF0q1ZIZLCMgepMg"},
+  ]},
+  {g:"Choo Choo", sl:"choo-choo", items:[
+    {n:"01", t:"JY Books Company Song", id:"1QniscScicPdFWAhMZoXJbbXWVA6hofbg"},
+    {n:"02", t:"Story Song", id:"1-qE5PL4cM6dNBv2okBuPd6EslfEL9eIZ"},
+    {n:"03", t:"Story Reading", id:"1JlcFlBtJCTQmI8f8VZmjcOYzWfYo_bl8"},
+    {n:"04", t:"Echo Chant", id:"11dd9iU9MaikWbcl6xR8RIFwIIMt5nQjw"},
+    {n:"05", t:"Song with Children", id:"1UU1Xz22F8aLAtXSmSYj7y5LS0hQXttjc"},
+    {n:"06", t:"Melody", id:"1bAJACsaECxFHDIUbPhJC8kTyXBxg64pd"},
+  ]},
+  {g:"Lemons Are Not Red", sl:"lemons-are-not-red", items:[
+    {n:"01", t:"JY Books Company Song", id:"1lTn6p_4W7Jyll80zQOYltsKI_DW_cOZp"},
+    {n:"02", t:"Story Song", id:"19zdYWo1coMTfQz1E2xcSsYhWlo8Me-a3"},
+    {n:"03", t:"Story Reading", id:"1zWB4avWw0ZDKYwjHWUCdAb7qPcdAd20c"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1be4UlF3ioy62f0pcg7y5GzoT_SS3PAKQ"},
+    {n:"05", t:"Echo Chant", id:"19s2wx0vvPfXjkCX5epL1JAB8PDD48vlU"},
+    {n:"06", t:"Song with Children", id:"1V5ymSOiqVJSV3vve3xcKcuLWvrhi9Tg7"},
+    {n:"07", t:"Melody", id:"12v5toqsWlZWeU3JdVxIGQ1HvDknxAOqn"},
+  ]},
+  {g:"Nighty Night, Little Green Monster", sl:"nighty-night-little-green-monster", items:[
+    {n:"01", t:"JY Books Company Song", id:"16dceo60w-zzDR5SCyzM-nApqobUAW0ba"},
+    {n:"02", t:"Story Song", id:"18aaGswlQydd2GSxJnKlwpmo4PtFH1-Ee"},
+    {n:"03", t:"Story Reading", id:"1oeotxTt93g8qZL3mNV0ht_nh3hDu2XM9"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1L_CBqEc_l2dmRUIiOUcCi9MhMEQLvac8"},
+    {n:"05", t:"Echo Chant", id:"18cYB91SIBmwSRsg8gKm6JwRTfyjnO1nc"},
+    {n:"06", t:"Song with Children", id:"1q_8JZtgu6baTMRuePHqjmokVZ763uqHc"},
+    {n:"07", t:"Melody", id:"1MOKfv13HhUqytA4PvN4lrcV0WTeb2TS8"},
+  ]},
+  {g:"Splish Splash Ducky", sl:"splish-splash-ducky", items:[
+    {n:"01", t:"JY Books Company Song", id:"1QbRrzspyt3YhkSNnCJvve_E-P0CSa0L7"},
+    {n:"02", t:"Story Song", id:"1kLfGHGxIEt9X86dv2zNsWu1-qBqpN7wJ"},
+    {n:"03", t:"Story Reading", id:"1tXCapCbxUF2bdyqYzejNJCGIPtMEwJiC"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1xoQiNUgdrKm67SooJZyOdDiaoKsYHDNN"},
+    {n:"05", t:"Echo Chant", id:"1Zbl6PvhUL2UZa9PT8sz7AV6XnyXRCIrQ"},
+    {n:"06", t:"Song with Children", id:"1UKgpM34FUIjiFyJq1pxruO_17qZRSv3h"},
+    {n:"07", t:"Melody", id:"15rCcg6NnDfJEftmF-UzRLEui_UHeDZQD"},
+  ]},
+  {g:"Whose Baby Am I", sl:"whose-baby-am-i", items:[
+    {n:"01", t:"JY Books Company Song", id:"1ikdbyjRtA5j9fmF6bfwfE5VTn8pMOcvU"},
+    {n:"02", t:"Story Song", id:"1c_FRBkwjaUI3_EPjJOZz3iFWw77DnWYH"},
+    {n:"03", t:"Story Reading", id:"1_wiD4seXCgESkXeFeOW8vFuNATZ0ad4T"},
+    {n:"04", t:"Story Reading (페이지 넘김음 없음)", id:"1gI_JVKLBKKAw9W2ZtiXq0DYG-trmjS_u"},
+    {n:"05", t:"Echo Chant", id:"1KO4se0aSrBFqnNlqR7zxKxSikojBuAXV"},
+    {n:"06", t:"Song with Children", id:"1tsprzhZMYAn_cqEkhQGF_OPB6bg7b79c"},
+    {n:"07", t:"Melody", id:"1JxbbeFPwK-d6F_oeHCVloI-XqyAw3kcN"},
+    {n:"08", t:"트랙 8", id:"1FCm_SNFQGwbBOU8I4y8EhBW7-nptrXln"},
+    {n:"09", t:"트랙 9", id:"1a1FIeBQCSo-eI5TfAuw6gH5rxEPstYjY"},
+    {n:"10", t:"트랙 10", id:"1S8NmLHKJMHVAhNJKuI5LHR6oVOh3D3ME"},
+    {n:"11", t:"트랙 11", id:"1iO8fp5HJt_EjyiiOb6eHbJDyDxxhZA0o"},
+  ]},
+  {g:"Welcome Baby", sl:"welcome-baby", items:[
+    {n:"01", t:"JY Books Company Song", id:"1aFX2FvgfAnv3w5kFLGMpYduo82zw-9z4"},
+    {n:"02", t:"Title", id:"11yl-k2wjbfApL1wVqG7R2erUDgnGBWoZ"},
+    {n:"03", t:"For Baby", id:"1L7eOv0oyjhp-RIL34TcXBLSwWxV8nA5b"},
+    {n:"04", t:"Welcome Baby!", id:"1396ZDOd6N4h5am8WN6K36njStNR8JUkr"},
+    {n:"05", t:"Diaper Song", id:"190ENT8_kQSRn4Gstw274ne3SfVPNNH7v"},
+    {n:"06", t:"Your Nose Knows", id:"1aTTAh5pj_x_375--463lLyxhl6X_Exv6"},
+    {n:"07", t:"Barnyard Chat", id:"13VLHU_EbxWbGGdlf9HZrJuNB2A8oujYM"},
+    {n:"08", t:"Baby's Things", id:"1BGGgWnVrWYZEe_hdcuJgT6ZCFrQrlpK3"},
+    {n:"09", t:"All Aboard", id:"1gJBeK9_p3nJZSn7nLLVMG6aR4Rx2_uhG"},
+    {n:"10", t:"Who's a Good Baby", id:"1EJ0vRYqnVEXXfR-tg3XphrcccgDaef2s"},
+    {n:"11", t:"What Babies Do", id:"105JPCv4dFmVwNc5i4ZBYfFNZL1m3kMN9"},
+    {n:"12", t:"I Like Buttons", id:"19vXkT2V464dnM1ku1PWUuGNGM7o-dZQt"},
+    {n:"13", t:"Messy", id:"1ofLXWjrkFIvcja58PMGwijTUSVN98DpA"},
+    {n:"14", t:"Splishy Splashy", id:"1fCBWeV5jrtkTsPeCcSaOMQ0V6m4A9HKd"},
+    {n:"15", t:"Little Blue Whale", id:"1xUfZR2IuRjmMW2oeV3gaZXqFRJZYMuMn"},
+    {n:"16", t:"Here's My Ball", id:"1v85WCEKlkxMJTEJbBsHfzBv_TQYwVp-8"},
+    {n:"17", t:"Giddyap", id:"1t7UNZ-UQxOEzlS-RbmG3BJsbIxXjRyXv"},
+    {n:"18", t:"Silly Toe Song", id:"1-Fo1S7FGEw_KHoGmcm0BHGj0Wd0uUK7R"},
+    {n:"19", t:"Babies in a Stroller", id:"1vd5B6PECg3EYRZqWm9lrWEKiqclM2xCM"},
+    {n:"20", t:"Peekaboo, Kangaroo!", id:"1B8MsVzSVZPUQzd-STvsZi5Zrd0_0gsc1"},
+    {n:"21", t:"Riding Shoulders", id:"1Ma49gPV14e4caDzlrASgvUpOZ2kp6sTM"},
+    {n:"22", t:"Walking", id:"1MWlo32vVGvv8UFXiiuIOKSrxM9lfzWMC"},
+    {n:"23", t:"Talking", id:"1ZIhudWMklZHJh4epXI8q4nvsFag0XX6Q"},
+    {n:"24", t:"Taking Care of Bear", id:"1wK55myDLCNNeOUPJOyI06vdb3S8ZtWWN"},
+    {n:"25", t:"Baby's Birthday", id:"1ZlOd-egEyRDXql3izhi-ULvKTKo0xOQU"},
+    {n:"26", t:"A B C", id:"1H_ys_k_PQ7z1Yrvs7RV1FBm6vm5MJAaS"},
+    {n:"27", t:"1 2 3", id:"1fAUcZavq7gnxehpyh7hvPf6BTrscAcg1"},
+    {n:"28", t:"Red Green Yellow Blue", id:"1PzHWibILVGWH5fat52QloTiWIU045eVY"},
+    {n:"29", t:"Wiggle Your Fingers and Toes", id:"1ZPv5UjMDg5Qw8Wa_HjBQynzEOx3N4cih"},
+    {n:"30", t:"Hug", id:"1AISe53sdEPaRd3GLJc9oDMtzqNKWrKxV"},
+    {n:"31", t:"Morning Walk", id:"1HVUSD1riPLZZXek991QpihocQSg0CcuE"},
+    {n:"32", t:"Windup Boy", id:"18hY40V2vXg5Ua9-qbo3OFq_nUN2aC9Pr"},
+    {n:"33", t:"Grasshopper Girl", id:"1lq1_LzeargLh_ppSM_t5qeGLMPeKLl4V"},
+    {n:"34", t:"Sleepy Little Baby", id:"1-Mpuw8P8eepYaDGfWQJAF4sVLnoFEVF5"},
+    {n:"35", t:"Butterfly Kiss", id:"1K3aR7mP0nymAa1GYpLTbbKkWSZrY5xqO"},
+  ]},
+];
+
+/* ─── 유틸 ─── */
+const $=s=>document.querySelector(s);
+const au=$('#au');
+const mem={}; const store={
+  get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??null}},
+  set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
+};
+const fmt=s=>(!isFinite(s)||s<0)?"0:00":Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,'0');
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40);
+const gs=g=>g.sl||slug(g.g);   // 앨범 고유 주소(QR 링크의 기준)
+
+/* 파일명 → 보기 좋은 제목 (01_Color_Zoo.mp3 → 01 / Color Zoo) */
+const FIX={ "felen":"Helen", "nightly":"Nighty", "noisly":"Noisy", "jybooks":"JY Books" };
+function parseName(raw){
+  let s = raw.replace(/\.(mp3|m4a|wav|aac|ogg)$/i,'');
+  let n = ''; const m = s.match(/^(\d{1,3})[\s._-]+(.*)$/);
+  if(m){ n = m[1].padStart(2,'0'); s = m[2]; }
+  s = s.replace(/[_]+/g,' ').replace(/\s+/g,' ').trim();
+  s = s.split(' ').map(w=>{
+    const k = w.toLowerCase().replace(/[^a-z]/g,'');
+    if(FIX[k]) return w.replace(new RegExp(k,'i'), FIX[k]);
+    return w;
+  }).join(' ');
+  s = s.replace(/\bnot\b/g,'Not').replace(/\btoo\b/g,'Too').replace(/\bare\b/g,'Are');
+  return {n, t:s};
+}
+const prettyGroup = s => s.replace(/[_]+/g,' ').replace(/\s+/g,' ').trim();
+
+/* ─── 상태 ─── */
+let DATA=[], flat=[], view=[], curTab='all', cur=null, ci=-1;
+let autoNext=true, repOne=false, spd=1, sleepT=null, tried=0;
+const SPDS=[1,.85,.75,1.25];
+
+const urlMedia = id => APIKEY
+  ? `https://www.googleapis.com/drive/v3/files/${id}?alt=media&key=${APIKEY}`
+  : `https://drive.google.com/uc?export=download&id=${id}`;
+const urlAlt     = id => `https://drive.usercontent.google.com/download?id=${id}&export=download`;
+const urlPreview = id => `https://drive.google.com/file/d/${id}/preview`;
+
+/* ─── 드라이브 실시간 로딩 ─── */
+async function gList(parent){
+  const u = `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(`'${parent}' in parents and trashed=false`)}`
+          + `&key=${APIKEY}&fields=files(id,name,mimeType)&pageSize=1000&orderBy=name`;
+  const r = await fetch(u); if(!r.ok) throw new Error(r.status);
+  return (await r.json()).files || [];
+}
+async function loadLive(){
+  const top = await gList(ROOT);
+  const folders = top.filter(f=>f.mimeType.includes('folder'));
+  const loose   = top.filter(f=>f.mimeType.startsWith('audio/'));
+  const groups  = [];
+  if(loose.length) groups.push({g:"기타", items:loose.map(f=>({...parseName(f.name), id:f.id}))});
+  const kids = await Promise.all(folders.map(f=>gList(f.id).catch(()=>[])));
+  folders.forEach((f,i)=>{
+    const its = kids[i].filter(x=>x.mimeType.startsWith('audio/'))
+                       .map(x=>({...parseName(x.name), id:x.id}));
+    if(its.length) groups.push({g:prettyGroup(f.name), items:its});
+  });
+  groups.forEach(g=>g.items.sort((a,b)=>(a.n||'zz').localeCompare(b.n||'zz')));
+  return groups;
+}
+
+/* ─── 렌더 ─── */
+function build(){
+  flat = [];
+  DATA.forEach(g=>g.items.forEach(it=>flat.push({...it, g:g.g, gid:gs(g)})));
+  renderTabs(); render();
+  $('#foot').innerHTML = `총 ${DATA.length}개 묶음 · ${flat.length}개 음원<br>`
+    + `<a href="qr.html" style="color:inherit;text-decoration:underline">QR 스티커 시트 인쇄 →</a>`;
+}
+function renderTabs(){
+  $('#tabs').innerHTML = `<button class="tab" data-t="all" aria-selected="${curTab==='all'}">전체</button>`
+    + DATA.map(g=>`<button class="tab" data-t="${gs(g)}" aria-selected="${curTab===gs(g)}">${g.g}</button>`).join('');
+}
+function render(){
+  const q = $('#q').value.trim().toLowerCase();
+  $('#clr').style.display = q?'block':'none';
+  view = flat.filter(x=>{
+    const okT = curTab==='all' || x.gid===curTab;
+    const okQ = !q || (x.n+' '+x.t+' '+x.g).toLowerCase().includes(q);
+    return (q ? okQ : okT && okQ);
+  });
+  if(!view.length){ $('#body').innerHTML = '<div class="empty">일치하는 음원이 없어요</div>'; return; }
+  const groups = [];
+  view.forEach(x=>{ let g=groups.find(y=>y.g===x.g); if(!g){g={g:x.g,gid:x.gid,items:[]};groups.push(g);} g.items.push(x); });
+  $('#body').innerHTML = groups.map(g=>`
+    <section class="grp" id="${g.gid}">
+      <div class="grp-h"><h2>${g.g}</h2><span class="n">${g.items.length}곡</span></div>
+      <ul class="list">${g.items.map(it=>`
+        <li class="trk" data-i="${view.indexOf(it)}">
+          <div class="num">${it.n||'♪'}</div>
+          <div class="meta"><div class="t1">${it.t}</div><div class="t2">${g.g}</div></div>
+          <div class="eq"><i></i><i></i><i></i></div>
+        </li>`).join('')}</ul>
+    </section>`).join('');
+  mark();
+}
+function mark(){
+  document.querySelectorAll('li.trk').forEach(li=>li.classList.remove('on'));
+  if(!cur) return;
+  const i = view.findIndex(x=>x.id===cur.id);
+  if(i>=0){ const li=document.querySelector(`li.trk[data-i="${i}"]`); if(li) li.classList.add('on'); }
+}
+
+/* ─── 재생 ─── */
+function play(i){
+  if(i<0||i>=view.length) return;
+  ci=i; cur=view[i]; tried=0;
+  $('#pt').textContent=cur.t; $('#ps').textContent=cur.g+(cur.n?' · '+cur.n:'');
+  $('#player').classList.add('up');
+  au.src=urlMedia(cur.id); au.playbackRate=spd; au.play().catch(()=>{});
+  store.set('last', cur.id); mark();
+  if('mediaSession' in navigator){
+    navigator.mediaSession.metadata=new MediaMetadata({title:cur.t,artist:cur.g,album:'노부영 음원'});
+    navigator.mediaSession.setActionHandler('previoustrack',()=>play(ci-1));
+    navigator.mediaSession.setActionHandler('nexttrack',()=>play(ci+1));
+  }
+}
+au.addEventListener('error',()=>{
+  if(!cur) return; tried++;
+  if(tried===1){ au.src=urlAlt(cur.id); au.play().catch(()=>{}); }
+  else fallback();
+});
+function fallback(){
+  $('#mT').textContent=cur.t;
+  $('#mP').textContent='브라우저에서 바로 재생되지 않아 구글 드라이브 플레이어로 엽니다. 폴더 공유가 "링크가 있는 모든 사용자"로 되어 있는지 확인해 주세요.';
+  $('#mF').style.display='block'; $('#mF').src=urlPreview(cur.id);
+  $('#modal').classList.add('on');
+}
+function notice(t,p){ $('#mT').textContent=t; $('#mP').textContent=p; $('#mF').style.display='none'; $('#modal').classList.add('on'); }
+$('#mX').onclick=()=>{ $('#mF').src=''; $('#modal').classList.remove('on'); };
+$('#modal').onclick=e=>{ if(e.target.id==='modal') $('#mX').click(); };
+
+$('#play').onclick=()=>{ if(!cur){play(0);return;} au.paused?au.play():au.pause(); };
+$('#prev').onclick=()=>{ au.currentTime>3 ? au.currentTime=0 : play(ci-1); };
+$('#next').onclick=()=>play(ci+1);
+au.onplay =()=>{$('#ip').style.display='none';$('#iq').style.display='block'};
+au.onpause=()=>{$('#ip').style.display='block';$('#iq').style.display='none'};
+au.onended=()=>{ if(repOne){au.currentTime=0;au.play();} else if(autoNext) play(ci+1); };
+au.ontimeupdate=()=>{ if(!au.duration)return;
+  const p=au.currentTime/au.duration*100;
+  $('#seek').value=p*10; $('#seek').style.setProperty('--pct',p+'%');
+  $('#cur').textContent=fmt(au.currentTime); $('#dur').textContent=fmt(au.duration); };
+$('#seek').oninput=e=>{ if(au.duration) au.currentTime=au.duration*e.target.value/1000; };
+
+$('#cRep').onclick =e=>{repOne=!repOne;e.currentTarget.setAttribute('aria-pressed',repOne)};
+$('#cAuto').onclick=e=>{autoNext=!autoNext;e.currentTarget.setAttribute('aria-pressed',autoNext)};
+$('#cSpd').onclick =e=>{spd=SPDS[(SPDS.indexOf(spd)+1)%SPDS.length];au.playbackRate=spd;
+  e.currentTarget.textContent=(spd===1?'1':spd)+'×'};
+$('#cSleep').onclick=e=>{
+  if(sleepT){clearTimeout(sleepT);sleepT=null;e.currentTarget.setAttribute('aria-pressed',false);}
+  else{ sleepT=setTimeout(()=>{au.pause();sleepT=null;$('#cSleep').setAttribute('aria-pressed',false);},30*60*1000);
+        e.currentTarget.setAttribute('aria-pressed',true); }
+};
+
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.tab');
+  if(t){ curTab=t.dataset.t; $('#q').value=''; if(curTab!=='all')location.hash=curTab; renderTabs(); render(); return; }
+  const li=e.target.closest('li.trk'); if(li) play(+li.dataset.i);
+});
+$('#q').addEventListener('input',render);
+$('#clr').onclick=()=>{$('#q').value='';render()};
+window.addEventListener('hashchange',applyHash);
+function applyHash(){
+  const h=decodeURIComponent(location.hash.slice(1)); if(!h) return;
+
+  // ① 트랙 딥링크 — #t=<파일ID>  또는  #n=03 (트랙번호)
+  if(h.startsWith('t=')||h.startsWith('n=')){
+    const v=h.slice(2);
+    const item = h[0]==='t' ? flat.find(x=>x.id===v)
+                            : flat.find(x=>x.n===v.padStart(2,'0'));
+    if(item){
+      curTab='all'; $('#q').value=''; renderTabs(); render();
+      const i=view.findIndex(x=>x.id===item.id);
+      if(i>=0){
+        play(i);
+        setTimeout(()=>{
+          const li=document.querySelector(`li.trk[data-i="${i}"]`);
+          if(li) li.scrollIntoView({behavior:'smooth',block:'center'});
+        },60);
+        // 브라우저가 자동재생을 막았을 때: 한 번만 탭하면 시작
+        setTimeout(()=>{ if(au.paused){
+          const once=()=>{ au.play().catch(()=>{}); document.removeEventListener('touchend',once);
+                           document.removeEventListener('click',once); };
+          document.addEventListener('touchend',once,{once:true});
+          document.addEventListener('click',once,{once:true});
+        }},350);
+      }
+    }
+    return;
+  }
+
+  // ② 묶음(책) 딥링크 — #story-song
+  if(DATA.some(g=>gs(g)===h)){ curTab=h; renderTabs(); render();
+    const el=document.getElementById(h); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+}
+
+/* ─── 부팅 ─── */
+(async function(){
+  if(APIKEY){
+    try{
+      DATA = await loadLive();
+      $('#dot').className='dot live';
+      $('#statusTxt').textContent='드라이브와 자동 동기화됨';
+    }catch(e){
+      DATA = SEED;
+      $('#statusTxt').textContent='드라이브 연결 실패 — 저장된 목록으로 표시 중';
+    }
+  } else {
+    DATA = SEED;
+    $('#statusTxt').textContent='저장된 목록 (자동 동기화 꺼짐)';
+  }
+  build(); applyHash();
+})();
+</script>
+</body>
+</html>
